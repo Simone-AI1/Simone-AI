@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-dark: #0a0a23;
+  --color-darker: #050510;
+  --color-neon-blue: #00f0ff;
+  --color-neon-purple: #8e00ff;
+  --color-light-gray: #cccccc;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-dark);
+  color: white;
+  overflow-x: hidden;
+}
+
+@layer components {
+  .neon-glow-blue {
+    filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.7));
+  }
+  
+  .neon-glow-purple {
+    filter: drop-shadow(0 0 8px rgba(142, 0, 255, 0.7));
+  }
+  
+  .neon-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .neon-button:hover {
+    filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.8));
+    transform: translateY(-2px);
+  }
+  
+  .neon-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
+    transform: translateX(-100%);
+  }
+  
+  .neon-button:hover::after {
+    transform: translateX(100%);
+    transition: transform 0.8s ease;
+  }
+  
+  .gradient-text {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(to right, var(--color-neon-blue), var(--color-neon-purple));
+  }
+  
+  .fadeIn {
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+  
+  .slideUp {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  .appear {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
