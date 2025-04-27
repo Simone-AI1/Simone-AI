@@ -30,9 +30,22 @@ const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-24 px-6">
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="space-y-8">
+    <section className="min-h-screen flex items-center justify-center pt-24 px-6 relative overflow-hidden">
+      <div className="absolute inset-0 w-full h-full">
+        <spline-viewer 
+          url="https://prod.spline.design/5hh8YCDBvJhHebQY/scene.splinecode"
+          className="w-full h-full"
+          style={{ 
+            background: 'transparent',
+            font: 'Inter, sans-serif',
+            fontSize: '16px',
+            color: 'rgb(255, 255, 255)'
+          }}
+        />
+      </div>
+      
+      <div className="max-w-4xl mx-auto text-center relative z-10">
+        <div className="space-y-8 bg-[#0a0a23]/30 p-8 rounded-2xl">
           <h1 
             ref={headingRef}
             className="text-4xl md:text-6xl font-bold leading-tight appear"
